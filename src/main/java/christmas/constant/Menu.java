@@ -29,4 +29,11 @@ public enum Menu {
     public int getPrice() {
         return price;
     }
+
+    public static Menu valueOfMenu (String menu) {
+        return Arrays.stream(values())
+                .filter(value -> value.menu.equals((menu)))
+                .findAny()
+                .orElse(null);
+    }
 }
