@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class InputValidationTest {
+class VisitDateValidationTest {
     private VisitDateValidation visitDateValidation;
 
     @BeforeEach
