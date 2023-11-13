@@ -1,9 +1,8 @@
-package christmas.service;
+package christmas.service.DiscountEvent;
 
 import christmas.constant.MenuCode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -18,20 +17,19 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-class DiscountEventTest {
+class DiscountCalculatorTest {
 
-    private DiscountEvent discountEvent;
+    DiscountCalculator discountCalculator;
 
     @BeforeEach
     void setUp() {
-        discountEvent = new DiscountEvent();
+        discountCalculator = new DiscountCalculator();
     }
-
     @DisplayName("크리스마스 디데이 할인 확인")
     @ParameterizedTest(name = "{0}일 할인 금액: {1}원")
     @CsvSource({"1, 1000", "5, 1400", "10, 1900", "25, 3400", "26, 0", "31, 0"})
     void checkChristmasDDayDiscount(int date, int discount) {
-        int result = discountEvent.getDDayDiscount(date);
+        int result = discountCalculator.calculateDDayDiscount(date);
         int answer = discount;
 
         assertThat(result).isEqualTo(answer);
@@ -41,10 +39,9 @@ class DiscountEventTest {
     @ParameterizedTest(name = "할인 금액: {2}원")
     @MethodSource("MenuCodeAndOrderMenu")
     void checkDiscountForMenuCategory(String menuCode, Map<String, Integer> orderMenu, int discount) {
-        int result = discountEvent.getDiscount(menuCode, orderMenu);
+        int result = discountCalculator.calculateDiscountForMenu(menuCode, orderMenu);
         int answer = discount;
         assertThat(result).isEqualTo(answer);
-
     }
 
     private static Stream<Arguments> MenuCodeAndOrderMenu() {
@@ -76,7 +73,7 @@ class DiscountEventTest {
     @ParameterizedTest
     @MethodSource("dateNumberAndOrderMenu")
     void checkWeekdayDiscount(int dateNumber, Map<String, Integer> orderMenu, List<Integer> discount) {
-        int result = discountEvent.getWeekdayDiscount(dateNumber, orderMenu);
+        int result = discountCalculator.calculateWeekdayDiscount(dateNumber, orderMenu);
         int answer = discount.get(0);
 
         assertThat(result).isEqualTo(answer);
@@ -86,7 +83,7 @@ class DiscountEventTest {
     @ParameterizedTest
     @MethodSource("dateNumberAndOrderMenu")
     void checkWeekendDiscount(int dateNumber, Map<String, Integer> orderMenu, List<Integer> discount) {
-        int result = discountEvent.getWeekendDiscount(dateNumber, orderMenu);
+        int result = discountCalculator.calculateWeekendDiscount(dateNumber, orderMenu);
         int answer = discount.get(1);
 
         assertThat(result).isEqualTo(answer);
@@ -111,9 +108,10 @@ class DiscountEventTest {
     @ParameterizedTest(name = "특별 할인: {1}원")
     @CsvSource({"1, 0", "7, 1000", "25, 1000"})
     void checkStarDiscount(int dateNumber, int discount) {
-        int result = discountEvent.getStarDiscount(dateNumber);
+        int result = discountCalculator.calculateStarDiscount(dateNumber);
         int answer = discount;
 
         assertThat(result).isEqualTo(answer);
     }
+
 }
