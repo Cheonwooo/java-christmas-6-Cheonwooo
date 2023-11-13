@@ -69,6 +69,7 @@ public class ChristmasPromotion {
         if (present.equals("대상아님")) {
             history.append("없음");
             outputView.printBenefitHistory(history);
+            totalDiscount = getTotalDiscount(date, orderMenu, present);
             return totalDiscount;
         }
         history = benefitHistory.getBenefitHistory(date, orderMenu, present);

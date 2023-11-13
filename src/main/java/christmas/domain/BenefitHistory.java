@@ -26,7 +26,11 @@ public class BenefitHistory {
     }
 
     public int getTotalDiscount(int date, Map<String, Integer> menu, String present) {
-        int totalDiscount = discountResult.getTotalDiscount(date, menu, present);
+        int totalDiscount = 0;
+        if(present.equals("대상아님")) {
+            return totalDiscount;
+        }
+        totalDiscount = discountResult.getTotalDiscount(date, menu, present);
         return totalDiscount;
     }
 
