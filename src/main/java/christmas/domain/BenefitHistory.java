@@ -32,8 +32,12 @@ public class BenefitHistory {
 
 
     public int getPresentMenuPrice(String present) {
-        MenuBoard presentMenuBoard = MenuBoard.valueOfMenu(present);
-        int presentMenuPrice = presentMenuBoard.getPrice();
+        int presentMenuPrice = 0;
+        if(!present.equals("대상아님")) {
+            MenuBoard presentMenuBoard = MenuBoard.valueOfMenu(present);
+            presentMenuPrice = presentMenuBoard.getPrice();
+            return presentMenuPrice;
+        }
         return presentMenuPrice;
     }
 }
