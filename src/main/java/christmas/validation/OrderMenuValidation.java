@@ -1,9 +1,12 @@
 package christmas.validation;
 
 import christmas.constant.MenuBoard;
+import christmas.constant.MenuCode;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class OrderMenuValidation {
     public void validateMenuOrderInput(String input) {
@@ -14,6 +17,7 @@ public class OrderMenuValidation {
         validateMenuCountLessThanOne(input);
         validateTotalMenuCount(input);
         validateDuplicatedOrder(input);
+        validateOrderOnlyBeverage(input);
     }
 
     public void validateInputIsNull(String input) {
@@ -99,6 +103,24 @@ public class OrderMenuValidation {
                 .distinct().toList();
 
         if (!orderMenu.equals(deleteDuplicateOrder)) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
+    }
+
+    public void validateOrderOnlyBeverage(String input) {
+        List<String> orderMenu = Arrays
+                .stream(input.split(","))
+                .map(name -> name.split("-")[0])
+                .toList();
+
+        Set<String> code = new HashSet<>();
+        for(String order : orderMenu) {
+            MenuCode menuCode = MenuCode.findByMenuCode(order);
+
+            code.add(menuCode.getMenuCode());
+        }
+
+        if(code.size() == 1 && code.contains(MenuCode.BEVERAGE.getMenuCode())) {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         }
     }

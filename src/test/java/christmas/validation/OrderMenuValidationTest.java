@@ -16,7 +16,7 @@ class OrderMenuValidationTest {
         orderMenuValidation = new OrderMenuValidation();
     }
 
-    @DisplayName("아무값도 입력하지 않은 경우")
+    @DisplayName("아무값도 입력하지 않은 경우 에러가 발생한다.")
     @Test
     void inputNothingValue() {
         String input = "";
@@ -25,7 +25,7 @@ class OrderMenuValidationTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("메뉴를 쉼표(,)로 구분하지 않은 경우")
+    @DisplayName("메뉴를 쉼표(,)로 구분하지 않은 경우 에러가 발생한다.")
     @ParameterizedTest
     @ValueSource(strings = {"해산물파스타-2.레드와인-1", "해산물파스타-2/레드와인-1", "해산물파스타-2 레드와인-1"})
     void menuWithoutCommaSeparator(String input) {
@@ -33,7 +33,7 @@ class OrderMenuValidationTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("메뉴 이름과 개수 사이에 대시(-)를 사용하지 않은 경우")
+    @DisplayName("메뉴 이름과 개수 사이에 대시(-)를 사용하지 않은 경우 에러가 발생한다.")
     @ParameterizedTest
     @ValueSource(strings = {"해산물파스타:2,레드와인-1", "해산물파스타.2,레드와인-1", "해산물파스타-2,레드와인1"})
     void menuWithoutDashSeparator(String input) {
@@ -41,7 +41,7 @@ class OrderMenuValidationTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("메뉴판에 없는 메뉴를 입력한 경우")
+    @DisplayName("메뉴판에 없는 메뉴를 입력한 경우 에러가 발생한다.")
     @ParameterizedTest
     @ValueSource(strings = {"해산물파스타:2,화이트와인-1", "바질페스토파스타.2,레드와인-1", "봉골레파스타-2,레드와인-1"})
     void menuNotOnMenuBoard(String input) {
@@ -49,7 +49,7 @@ class OrderMenuValidationTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("메뉴의 개수를 1보다 작은 수를 입력하는 경우")
+    @DisplayName("메뉴의 개수를 1보다 작은 수를 입력하는 경우 에러가 발생한다.")
     @ParameterizedTest
     @ValueSource(strings = {"해산물파스타-0,레드와인-1", "해산물파스타--1,레드와인-1", "해산물파스타-,레드와인-1"})
     void menuCountLessThanOne(String input) {
@@ -57,20 +57,28 @@ class OrderMenuValidationTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("메뉴의 개수의 총합이 20이 넘어가는 경우")
+    @DisplayName("메뉴의 개수의 총합이 20이 넘어가는 경우 에러가 발생한다.")
     @ParameterizedTest
     @ValueSource(strings = {"양송이수프-3,시저샐러드-3,해산물파스타-2,티본스테이크-2,바비큐립-4,아이스크림-6,레드와인-6,초코케이크-3",
             "양송이수프-21", "초코케이크-30"})
-    void TotalMenuCountExceedsLimit(String input) {
+    void totalMenuCountExceedsLimit(String input) {
         assertThatThrownBy(() -> orderMenuValidation.validateTotalMenuCount(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("중복 메뉴를 입력하는 경우")
+    @DisplayName("중복 메뉴를 입력하는 경우 에러가 발생한다.")
     @ParameterizedTest
     @ValueSource(strings = {"해산물파스타-2,해산물파스타-1", "레드와인-1,레드와인-2"})
-    void DuplicateOrder(String input) {
+    void duplicateOrder(String input) {
         assertThatThrownBy(() -> orderMenuValidation.validateDuplicatedOrder(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("음료만 주문하는 경우 에러가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"제로콜라-19", "레드와인-10,샴페인-9"})
+    void orderOnlyBeverage(String input) {
+        assertThatThrownBy(() -> orderMenuValidation.validateOrderOnlyBeverage(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
