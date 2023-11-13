@@ -41,38 +41,7 @@ public class BenefitHistory {
         getPresentDiscount(present);
     }
 
-    public void getDDayDiscount(int dateNumber) {
-        int dDayDiscount = discountEvent.getDDayDiscount(dateNumber);
-        totalDiscount += dDayDiscount;
 
-        discountPrice.add(decimalFormat.format(dDayDiscount));
-    }
-
-    public void getWeekDayDiscount(int dateNumber, Map<String, Integer> menu) {
-        int weekdayDiscount = discountEvent.getWeekdayDiscount(dateNumber, menu);
-        totalDiscount += weekdayDiscount;
-
-        discountPrice.add(decimalFormat.format(weekdayDiscount));
-    }
-
-    public void getWeekendDiscount(int dateNumber, Map<String, Integer> menu) {
-        int weekendDiscount = discountEvent.getWeekendDisCount(dateNumber, menu);
-        totalDiscount += weekendDiscount;
-
-        discountPrice.add(decimalFormat.format(weekendDiscount));
-    }
-
-    public void getSpecialDiscount(int dateNumber) {
-        int specialDiscount = discountEvent.getStarDiscount(dateNumber);
-        totalDiscount += specialDiscount;
-
-        discountPrice.add(decimalFormat.format(specialDiscount));
-    }
-
-    public void getPresentDiscount(String present) {
-        MenuBoard presentMenuBoard = MenuBoard.valueOfMenu(present);
-        int presentMenuPrice = presentMenuBoard.getPrice();
-        totalDiscount += presentMenuPrice;
 
         discountPrice.add(decimalFormat.format(presentMenuPrice));
     }
