@@ -14,7 +14,7 @@ public class TotalDiscount {
         int dateNumber = dayFinder.calculateDate(date);
         int totalDiscount = 0;
 
-        totalDiscount += dDayDiscount.getDDayDiscount(dateNumber);
+        totalDiscount += dDayDiscount.getDDayDiscount(date);
         totalDiscount += weekDiscount.getWeekDayDiscount(dateNumber, orderMenu);
         totalDiscount += weekDiscount.getWeekendDiscount(dateNumber, orderMenu);
         totalDiscount += specialDiscount.getSpecialDiscount(dateNumber);
