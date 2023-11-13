@@ -4,39 +4,36 @@ import christmas.service.DiscountEvent.*;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 public class DiscountResult {
-    private List<String> discountPrice = new ArrayList<>();
     DDayDiscount dDayDiscount = new DDayDiscount();
     PresentDiscount presentDiscount = new PresentDiscount();
     SpecialDiscount specialDiscount = new SpecialDiscount();
     WeekDiscount weekDiscount = new WeekDiscount();
+    TotalDiscount totalDiscount = new TotalDiscount();
     DecimalFormat decimalFormat = new DecimalFormat("###,###");
 
     DayFinder dayFinder = new DayFinder();
 
-    public DiscountResult() {
-    }
+    public List<String> summarizeDiscount(int date, Map<String, Integer> orderMenu, String present) {
+        int dateNumber = dayFinder.calculateDate(date);
+        List<String> discountPrice = new ArrayList<>();
 
-    public DiscountResult(List<String> discountPrice) {
-        this.discountPrice = discountPrice;
-    }
+        discountPrice.add(decimalFormat.format(dDayDiscount.getDDayDiscount(date)));
+        discountPrice.add(decimalFormat.format(weekDiscount.getWeekDayDiscount(dateNumber, orderMenu)));
+        discountPrice.add(decimalFormat.format(weekDiscount.getWeekendDiscount(dateNumber, orderMenu)));
+        discountPrice.add(decimalFormat.format(specialDiscount.getSpecialDiscount(dateNumber)));
+        discountPrice.add(decimalFormat.format(presentDiscount.getPresentDiscount(present)));
 
-    public List<String> getDiscountPrice() {
         return discountPrice;
     }
 
-    public DiscountResult summarizeDiscount(int date, Map<String, Integer> orderMenu, String present) {
-        int dateNumber = dayFinder.calculateDate(date);
+    public int getTotalDiscount(int date, Map<String, Integer> orderMenu, String present) {
+        int discount = totalDiscount.calculateTotalDiscount(date, orderMenu, present);
 
-        discountPrice.add(decimalFormat.format(String.valueOf(dDayDiscount.getDDayDiscount(dateNumber))));
-        discountPrice.add(decimalFormat.format(String.valueOf(weekDiscount.getWeekDayDiscount(dateNumber, orderMenu))));
-        discountPrice.add(decimalFormat.format(String.valueOf(weekDiscount.getWeekendDiscount(dateNumber, orderMenu))));
-        discountPrice.add(decimalFormat.format(String.valueOf(specialDiscount.getSpecialDiscount(dateNumber))));
-        discountPrice.add(decimalFormat.format(String.valueOf(presentDiscount.getPresentDiscount(present))));
-
-        return new DiscountResult(discountPrice);
+        return discount;
     }
 }
