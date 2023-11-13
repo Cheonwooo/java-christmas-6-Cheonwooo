@@ -1,12 +1,14 @@
 package christmas.service;
 
-import christmas.constant.MenuBoard;
+import christmas.constant.Present;
 
 public class PresentEvent {
 
     public String checkPresentEvent(int totalPrice) {
-        if(totalPrice >= 120000) {
-            return MenuBoard.CHAMPAGNE.getMenu();
+        for(Present event : Present.values()) {
+            if(totalPrice >= event.getTotalPrice()){
+                return event.getPresent();
+            }
         }
         return "없음";
     }
