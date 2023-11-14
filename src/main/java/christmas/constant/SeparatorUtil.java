@@ -1,13 +1,13 @@
 package christmas.constant;
 
-public enum Separator {
+public enum SeparatorUtil {
 
     COMMA(","),
     DASH("-");
 
     private final String separator;
 
-    Separator(String separator) {
+    SeparatorUtil(String separator) {
         this.separator = separator;
     }
 
