@@ -1,5 +1,7 @@
 package christmas.service.discountevent;
 
+import christmas.service.util.DiscountCalculator;
+
 import java.util.Map;
 
 public class WeekDiscount {

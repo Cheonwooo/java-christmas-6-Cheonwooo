@@ -1,5 +1,7 @@
 package christmas.service.discountevent;
 
+import christmas.service.util.DiscountCalculator;
+
 public class DDayDiscount {
 
     public int getDDayDiscount(int dateNumber) {

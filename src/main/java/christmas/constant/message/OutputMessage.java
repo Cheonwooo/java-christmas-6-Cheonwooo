@@ -13,7 +13,7 @@ public enum OutputMessage {
     NOTHING("없음"),
     BENEFIT_HISTORY_TITLE(System.lineSeparator() + "<혜택 내역>"),
     TOTAL_BENEFIT_HISTORY_TITLE("<총혜택 금액>"),
-    PAYMENT_TITLE(System.lineSeparator() + "<할인 후 예상 결제 금약>"),
+    PAYMENT_TITLE(System.lineSeparator() + "<할인 후 예상 결제 금액>"),
     EVENT_BADGE_TITLE(System.lineSeparator() + "<12월 이벤트 배지>"),
     MINUS("-");
 

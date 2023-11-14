@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import christmas.constant.SeparatorUtil;
+import christmas.constant.util.SeparatorUtil;
 import christmas.view.InputView;
 
 import java.util.Arrays;
