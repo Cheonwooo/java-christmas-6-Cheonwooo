@@ -10,11 +10,6 @@ import java.util.stream.Collectors;
 public class ChristmasOrder {
     InputView inputView = new InputView();
 
-    public int getVisitDate() {
-
-        return inputView.getDate();
-    }
-
     public Map<String, Integer> getOrderMenu() {
         String menu = inputView.getMenu();
 

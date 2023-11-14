@@ -5,6 +5,7 @@ import christmas.constant.message.OutputMessage;
 import christmas.domain.BenefitHistory;
 import christmas.domain.ChristmasOrder;
 import christmas.domain.TotalOrderPrice;
+import christmas.domain.VisitDate;
 import christmas.service.PresentEvent;
 import christmas.service.discountevent.PresentDiscount;
 import christmas.service.discountevent.TotalDiscount;
@@ -16,6 +17,7 @@ public class ChristmasPromotion {
     BenefitHistory benefitHistory = new BenefitHistory();
     ChristmasOrder christmasOrder = new ChristmasOrder();
     TotalOrderPrice totalOrderPrice = new TotalOrderPrice();
+    VisitDate visitDate = new VisitDate();
     PresentDiscount presentDiscount = new PresentDiscount();
     TotalDiscount totalDiscount = new TotalDiscount();
     PresentEvent presentEvent = new PresentEvent();
@@ -38,7 +40,7 @@ public class ChristmasPromotion {
 
     public int getVisitDate() {
         outputView.printGuidePhrases();
-        return christmasOrder.getVisitDate();
+        return visitDate.getVisitDate();
     }
 
     public Map<String, Integer> getOrderMenu(int visitDate) {
