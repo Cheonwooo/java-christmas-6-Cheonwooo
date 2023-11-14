@@ -24,7 +24,7 @@ public class OrderMenuValidation {
     }
 
     public void validateInputIsNull(String input) {
-        if (input.equals(null) || input.equals("")) {
+        if (input == null || input.equals("")) {
             throw new IllegalArgumentException(ErrorMessage.ORDER_ERROR_MESSAGE.getErrorMsg());
         }
     }

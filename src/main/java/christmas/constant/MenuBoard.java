@@ -7,7 +7,7 @@ public enum MenuBoard {
     TAPAS("타파스", 5500),
     CAESAR_SALAD("시저샐러드", 8000),
     T_BONE_STEAK("티본스테이크", 55000),
-    BARBECUE_LIB("바비큐립",54000),
+    BARBECUE_LIB("바비큐립", 54000),
     SEAFOOD_PASTA("해산물파스타", 35000),
     CHRISTMAS_PASTA("크리스마스파스타", 25000),
     CHOCOLATE_CAKE("초코케이크", 15000),
@@ -33,7 +33,7 @@ public enum MenuBoard {
         return price;
     }
 
-    public static MenuBoard valueOfMenu (String menu) {
+    public static MenuBoard valueOfMenu(String menu) {
         return Arrays.stream(values())
                 .filter(value -> value.menu.equals((menu)))
                 .findAny()

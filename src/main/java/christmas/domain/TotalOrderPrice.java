@@ -9,7 +9,7 @@ public class TotalOrderPrice {
     public int orderPrice(Map<String, Integer> orderMenu) {
         int totalPrice = 0;
 
-        for(Map.Entry<String, Integer> entry : orderMenu.entrySet()) {
+        for (Map.Entry<String, Integer> entry : orderMenu.entrySet()) {
             totalPrice += calculatePrice(entry.getKey(), entry.getValue());
         }
 

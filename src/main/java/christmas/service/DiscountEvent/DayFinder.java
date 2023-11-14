@@ -15,8 +15,6 @@ public class DayFinder {
 
         DayOfWeek dayOfWeek = localDate.getDayOfWeek();
 
-        int dayOfWeekNumber = dayOfWeek.getValue();
-
-        return dayOfWeekNumber;
+        return dayOfWeek.getValue();
     }
 }

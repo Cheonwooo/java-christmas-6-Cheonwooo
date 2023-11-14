@@ -1,9 +1,5 @@
 package christmas.service.DiscountEvent;
 
-import christmas.constant.DayDiscount;
-import christmas.constant.MenuCode;
-import christmas.constant.MenuDiscount;
-
 import java.util.Map;
 
 public class WeekDiscount {

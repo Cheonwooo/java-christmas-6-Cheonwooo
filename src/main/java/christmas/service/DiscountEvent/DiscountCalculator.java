@@ -25,9 +25,8 @@ public class DiscountCalculator {
         if (dayDiscount.getWeek().equals(DayDiscount.WEEKEND.getWeek())) {
             return 0;
         }
-        int weekdayDiscount = calculateDiscountForMenu(dayDiscount.getDiscountMenuCode(), menu);
 
-        return weekdayDiscount;
+        return calculateDiscountForMenu(dayDiscount.getDiscountMenuCode(), menu);
     }
 
     public int calculateWeekendDiscount(int dateNumber, Map<String, Integer> menu) {
@@ -36,9 +35,8 @@ public class DiscountCalculator {
         if (dayDiscount.getWeek().equals(DayDiscount.WEEKDAY.getWeek())) {
             return 0;
         }
-        int weekendDiscount = calculateDiscountForMenu(dayDiscount.getDiscountMenuCode(), menu);
 
-        return weekendDiscount;
+        return calculateDiscountForMenu(dayDiscount.getDiscountMenuCode(), menu);
     }
 
     public int calculateDiscountForMenu(String discountMenuCode, Map<String, Integer> menu) {
@@ -50,9 +48,8 @@ public class DiscountCalculator {
                 discountMenuCount += entry.getValue();
             }
         }
-        int menuDiscount = MenuDiscount.getMenuCategory(discountMenuCode).getDiscount() * discountMenuCount;
 
-        return menuDiscount;
+        return MenuDiscount.getMenuCategory(discountMenuCode).getDiscount() * discountMenuCount;
     }
 
     public int calculateStarDiscount(int dateNumber) {
@@ -62,8 +59,6 @@ public class DiscountCalculator {
             return 0;
         }
 
-        int discountForStar = starDiscount.getDiscount();
-
-        return discountForStar;
+        return starDiscount.getDiscount();
     }
 }

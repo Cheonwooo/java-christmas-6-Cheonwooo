@@ -11,16 +11,14 @@ public class ChristmasOrder {
     InputView inputView = new InputView();
 
     public int getVisitDate() {
-        int date = inputView.getDate();
 
-        return date;
+        return inputView.getDate();
     }
 
     public Map<String, Integer> getOrderMenu() {
         String menu = inputView.getMenu();
-        Map<String, Integer> orderMenu = countingMenu(menu.split(Separator.COMMA.getSeparator()));
 
-        return orderMenu;
+        return countingMenu(menu.split(Separator.COMMA.getSeparator()));
     }
 
     public Map<String, Integer> countingMenu(String[] input) {

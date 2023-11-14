@@ -15,6 +15,7 @@ class VisitDateValidationTest {
     void setUp() {
         visitDateValidation = new VisitDateValidation();
     }
+
     @DisplayName("아무값도 입력하지 않는 경우")
     @Test
     void inputNothingValue() {

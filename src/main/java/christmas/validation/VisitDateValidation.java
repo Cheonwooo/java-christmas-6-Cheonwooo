@@ -14,7 +14,7 @@ public class VisitDateValidation {
     }
 
     public void validateInputInNull(String input) {
-        if (input.equals(null) || input.equals("")) {
+        if (input == null || input.equals("")) {
             throw new IllegalArgumentException(ErrorMessage.VISIT_DATE_ERROR_MESSAGE.getErrorMsg());
         }
     }

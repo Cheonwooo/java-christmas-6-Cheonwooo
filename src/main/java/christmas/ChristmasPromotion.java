@@ -34,8 +34,7 @@ public class ChristmasPromotion {
 
     public int getVisitDate() {
         outputView.printGuidePhrases();
-        int visitDate = christmasOrder.getVisitDate();
-        return visitDate;
+        return christmasOrder.getVisitDate();
     }
 
     public Map<String, Integer> getOrderMenu(int visitDate) {
@@ -61,7 +60,7 @@ public class ChristmasPromotion {
     }
 
     public int getBenefit(int date, Map<String, Integer> orderMenu, String present) {
-        int totalDiscount = 0;
+        int totalDiscount;
         StringBuilder history = new StringBuilder();
         if (present.equals(Present.NOT_EVENT_TARGET.getPresent())) {
             history.append(OutputMessage.NOTHING.getOutputMsg()).append("\n");
