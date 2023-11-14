@@ -10,7 +10,7 @@ public enum OutputMessage {
     PRICE("%s원" + System.lineSeparator()),
     PRESENT_MENU_TITLE(System.lineSeparator() + "<증정 메뉴>"),
     PRESENT_MENU("%s 1개" + System.lineSeparator()),
-    NO_PRESENT("없음"),
+    NOTHING("없음"),
     BENEFIT_HISTORY_TITLE(System.lineSeparator() + "<혜택 내역>"),
     TOTAL_BENEFIT_HISTORY_TITLE("<총혜택 금액>"),
     PAYMENT_TITLE(System.lineSeparator() + "<할인 후 예상 결제 금약>"),
