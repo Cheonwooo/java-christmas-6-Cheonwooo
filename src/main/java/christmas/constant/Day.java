@@ -8,7 +8,9 @@ public enum Day {
     FRIDAY(5),
     SATURDAY(6),
     SUNDAY(7),
-    CHRISTMAS(25);
+    CHRISTMAS(25),
+    EVENT_YEAR(2023),
+    EVENT_MONTH(12);
 
     private final int day;
 
