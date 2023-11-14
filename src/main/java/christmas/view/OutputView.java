@@ -1,6 +1,6 @@
 package christmas.view;
 
-import christmas.constant.Present;
+import christmas.constant.event.Present;
 import christmas.constant.message.OutputMessage;
 import christmas.service.BadgeEvent;
 

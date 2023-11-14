@@ -1,6 +1,6 @@
 package christmas.service;
 
-import christmas.constant.Badge;
+import christmas.constant.event.Badge;
 
 public class BadgeEvent {
 

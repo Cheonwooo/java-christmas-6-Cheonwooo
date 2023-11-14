@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import christmas.constant.MenuBoard;
+import christmas.constant.menu.MenuBoard;
 
 import java.util.Map;
 

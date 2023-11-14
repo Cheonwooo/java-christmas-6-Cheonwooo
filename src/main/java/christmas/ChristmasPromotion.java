@@ -1,6 +1,6 @@
 package christmas;
 
-import christmas.constant.Present;
+import christmas.constant.event.Present;
 import christmas.constant.message.OutputMessage;
 import christmas.domain.BenefitHistory;
 import christmas.domain.ChristmasOrder;

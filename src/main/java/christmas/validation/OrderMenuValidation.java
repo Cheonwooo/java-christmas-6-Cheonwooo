@@ -1,9 +1,9 @@
 package christmas.validation;
 
-import christmas.constant.MenuBoard;
-import christmas.constant.MenuCode;
-import christmas.constant.NumberUtil;
-import christmas.constant.Separator;
+import christmas.constant.menu.MenuBoard;
+import christmas.constant.menu.MenuCode;
+import christmas.constant.util.NumberUtil;
+import christmas.constant.SeparatorUtil;
 import christmas.constant.message.ErrorMessage;
 
 import java.util.Arrays;
@@ -39,13 +39,13 @@ public class OrderMenuValidation {
 
     public void validateDashSeparator(String input) {
         List<String> orderMenu = Arrays
-                .stream(input.split(Separator.COMMA.getSeparator()))
+                .stream(input.split(SeparatorUtil.COMMA.getSeparator()))
                 .toList();
 
         for (String menuName : orderMenu) {
             String deleteSeparator = menuName.replaceAll("[ㄱ-ㅎ가-힣a-zA-z]", "");
 
-            if (!deleteSeparator.equals(Separator.DASH.getSeparator())) {
+            if (!deleteSeparator.equals(SeparatorUtil.DASH.getSeparator())) {
                 throw new IllegalArgumentException(ErrorMessage.ORDER_ERROR_MESSAGE.getErrorMsg());
             }
         }
@@ -53,8 +53,8 @@ public class OrderMenuValidation {
 
     public void validateOrderNotOnMenuBoard(String input) {
         List<String> orderMenu = Arrays
-                .stream(input.split(Separator.COMMA.getSeparator()))
-                .map(name -> name.split(Separator.DASH.getSeparator())[0])
+                .stream(input.split(SeparatorUtil.COMMA.getSeparator()))
+                .map(name -> name.split(SeparatorUtil.DASH.getSeparator())[0])
                 .toList();
 
         for (String order : orderMenu) {
@@ -68,13 +68,13 @@ public class OrderMenuValidation {
 
     public void validateMenuCountLessThanOne(String input) {
         List<String> orderMenu = Arrays
-                .stream(input.split(Separator.COMMA.getSeparator()))
+                .stream(input.split(SeparatorUtil.COMMA.getSeparator()))
                 .toList();
 
         for (String order : orderMenu) {
             String remainCount = order
                     .replaceAll("[ㄱ-ㅎ가-힣a-zA-z]", "")
-                    .replaceFirst(Separator.DASH.getSeparator(), "");
+                    .replaceFirst(SeparatorUtil.DASH.getSeparator(), "");
 
             if (remainCount.isEmpty() || Integer.parseInt(remainCount) < 1) {
                 throw new IllegalArgumentException(ErrorMessage.ORDER_ERROR_MESSAGE.getErrorMsg());
@@ -84,8 +84,8 @@ public class OrderMenuValidation {
 
     public void validateTotalMenuCount(String input) {
         List<String> orderMenu = Arrays
-                .stream(input.split(Separator.COMMA.getSeparator()))
-                .map(name -> name.split(Separator.DASH.getSeparator())[1])
+                .stream(input.split(SeparatorUtil.COMMA.getSeparator()))
+                .map(name -> name.split(SeparatorUtil.DASH.getSeparator())[1])
                 .toList();
 
         int totalCount = 0;
@@ -100,8 +100,8 @@ public class OrderMenuValidation {
 
     public void validateDuplicatedOrder(String input) {
         List<String> orderMenu = Arrays
-                .stream(input.split(Separator.COMMA.getSeparator()))
-                .map(name -> name.split(Separator.DASH.getSeparator())[0])
+                .stream(input.split(SeparatorUtil.COMMA.getSeparator()))
+                .map(name -> name.split(SeparatorUtil.DASH.getSeparator())[0])
                 .toList();
 
         List<String> deleteDuplicateOrder = orderMenu.stream()
@@ -114,8 +114,8 @@ public class OrderMenuValidation {
 
     public void validateOrderOnlyBeverage(String input) {
         List<String> orderMenu = Arrays
-                .stream(input.split(Separator.COMMA.getSeparator()))
-                .map(name -> name.split(Separator.DASH.getSeparator())[0])
+                .stream(input.split(SeparatorUtil.COMMA.getSeparator()))
+                .map(name -> name.split(SeparatorUtil.DASH.getSeparator())[0])
                 .toList();
 
         Set<String> code = new HashSet<>();

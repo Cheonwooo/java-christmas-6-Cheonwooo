@@ -1,11 +1,13 @@
-package christmas.constant;
+package christmas.constant.event;
+
+import christmas.constant.util.DayUtil;
 
 import java.util.Arrays;
 import java.util.List;
 
 public enum StarDiscount {
 
-    STAR("특별 할인", 1000, Arrays.asList(Day.SUNDAY.getDay(), Day.CHRISTMAS.getDay()));
+    STAR("특별 할인", 1000, Arrays.asList(DayUtil.SUNDAY.getDay(), DayUtil.CHRISTMAS.getDay()));
 
     private final String week;
     private final int discount;

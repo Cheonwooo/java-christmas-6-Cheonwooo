@@ -1,6 +1,6 @@
 package christmas.service;
 
-import christmas.constant.Present;
+import christmas.constant.event.Present;
 
 public class PresentEvent {
 

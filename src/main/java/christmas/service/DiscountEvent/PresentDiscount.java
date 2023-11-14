@@ -1,6 +1,6 @@
 package christmas.service.DiscountEvent;
 
-import christmas.constant.MenuBoard;
+import christmas.constant.menu.MenuBoard;
 
 public class PresentDiscount {
 

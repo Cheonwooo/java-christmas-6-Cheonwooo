@@ -1,6 +1,6 @@
 package christmas.validation;
 
-import christmas.constant.NumberUtil;
+import christmas.constant.util.NumberUtil;
 import christmas.constant.message.ErrorMessage;
 
 public class VisitDateValidation {

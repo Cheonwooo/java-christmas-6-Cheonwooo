@@ -1,6 +1,8 @@
 package christmas.domain;
 
 import christmas.constant.*;
+import christmas.constant.event.Present;
+import christmas.constant.menu.MenuBoard;
 import christmas.service.DiscountResult;
 
 import java.util.List;

@@ -1,10 +1,11 @@
 package christmas.service.DiscountEvent;
 
-import christmas.constant.Day;
-import christmas.constant.DayDiscount;
-import christmas.constant.MenuCode;
-import christmas.constant.MenuDiscount;
-import christmas.constant.NumberUtil;
+import christmas.constant.util.DayUtil;
+import christmas.constant.event.DayDiscount;
+import christmas.constant.menu.MenuCode;
+import christmas.constant.event.MenuDiscount;
+import christmas.constant.util.NumberUtil;
+import christmas.constant.event.StarDiscount;
 
 import java.util.Map;
 
@@ -13,7 +14,7 @@ public class DiscountCalculator {
     public int calculateDDayDiscount(int date) {
         int dDayDiscount = NumberUtil.CHRISTMAS_DDAY_BASE_DISCOUNT.getNumber()
                 + (date - NumberUtil.BASE_DATE.getNumber()) * NumberUtil.ADDITIONAL_DISCOUNT_PER_DAY.getNumber();
-        if (date > Day.CHRISTMAS.getDay()) {
+        if (date > DayUtil.CHRISTMAS.getDay()) {
             return 0;
         }
         return dDayDiscount;
@@ -53,7 +54,7 @@ public class DiscountCalculator {
     }
 
     public int calculateStarDiscount(int dateNumber) {
-        christmas.constant.StarDiscount starDiscount = christmas.constant.StarDiscount.findDiscountForStar(dateNumber);
+        StarDiscount starDiscount = StarDiscount.findDiscountForStar(dateNumber);
 
         if (starDiscount == null) {
             return 0;

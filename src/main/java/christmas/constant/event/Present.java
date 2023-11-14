@@ -1,4 +1,6 @@
-package christmas.constant;
+package christmas.constant.event;
+
+import christmas.constant.menu.MenuBoard;
 
 public enum Present {
     CHAMPAGNE(MenuBoard.CHAMPAGNE.getMenu(), 120000),

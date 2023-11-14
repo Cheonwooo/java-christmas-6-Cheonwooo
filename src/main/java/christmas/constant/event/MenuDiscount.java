@@ -1,4 +1,4 @@
-package christmas.constant;
+package christmas.constant.event;
 
 import java.util.Collections;
 import java.util.Map;
