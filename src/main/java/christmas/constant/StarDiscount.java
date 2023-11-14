@@ -5,7 +5,7 @@ import java.util.List;
 
 public enum StarDiscount {
 
-    STAR("특별 할인", 1000, Arrays.asList(7, 25));
+    STAR("특별 할인", 1000, Arrays.asList(Day.SUNDAY.getDay(), Day.CHRISTMAS.getDay()));
 
     private final String week;
     private final int discount;

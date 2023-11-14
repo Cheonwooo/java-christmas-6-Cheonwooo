@@ -4,8 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum DayDiscount {
-    WEEKDAY("평일 할인", "디저트", Arrays.asList(1, 2, 3, 4, 7, 25)),
-    WEEKEND("주말 할인", "메인", Arrays.asList(5, 6));
+    WEEKDAY("평일 할인", "디저트", Arrays.asList(Day.MONDAY.getDay(), Day.THUESDAY.getDay(),
+            Day.WEDNESDAY.getDay(), Day.THURSDAY.getDay(), Day.SUNDAY.getDay(), Day.CHRISTMAS.getDay())),
+    WEEKEND("주말 할인", "메인", Arrays.asList(Day.FRIDAY.getDay(), Day.SATURDAY.getDay()));
 
     private final String week;
     private final String discountMenuCode;

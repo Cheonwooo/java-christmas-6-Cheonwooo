@@ -5,11 +5,11 @@ import christmas.constant.Badge;
 public class BadgeEvent {
 
     public static String getBadgeCategory(int totalDiscount) {
-        for(Badge badgeCategory : Badge.values()) {
-            if(totalDiscount >= badgeCategory.getPrice()) {
+        for (Badge badgeCategory : Badge.values()) {
+            if (totalDiscount >= badgeCategory.getPrice()) {
                 return badgeCategory.getBadge();
             }
         }
-        return "없음";
+        return Badge.NO_BADGE.getBadge();
     }
 }

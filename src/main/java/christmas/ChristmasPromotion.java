@@ -1,6 +1,7 @@
 package christmas;
 
 import christmas.constant.Present;
+import christmas.constant.message.OutputMessage;
 import christmas.domain.BenefitHistory;
 import christmas.domain.ChristmasOrder;
 import christmas.domain.TotalOrderPrice;
@@ -56,18 +57,14 @@ public class ChristmasPromotion {
         String present = presentEvent.checkPresentEvent(totalPrice);
         outputView.printPresentEvent(present);
 
-        if (totalPrice < Present.NOTHING.getTotalPrice()) {
-            present = "대상아님";
-        }
-
         return present;
     }
 
     public int getBenefit(int date, Map<String, Integer> orderMenu, String present) {
         int totalDiscount = 0;
         StringBuilder history = new StringBuilder();
-        if (present.equals("대상아님")) {
-            history.append("없음");
+        if (present.equals(Present.NOT_EVENT_TARGET.getPresent())) {
+            history.append(OutputMessage.NOTHING.getOutputMsg()).append("\n");
             outputView.printBenefitHistory(history);
             totalDiscount = getTotalDiscount(date, orderMenu, present);
             return totalDiscount;

@@ -14,20 +14,20 @@ public class BenefitHistory {
         StringBuilder history = new StringBuilder();
         List<String> discountPrice = discountResult.summarizeDiscount(date, orderMenu, present);
 
-        int index = -1;
+        int orderMenuIndex = -1;
         for (DiscountCategories discountCategories : DiscountCategories.values()) {
-            index++;
-            if (discountPrice.get(index).equals("0")) {
+            orderMenuIndex++;
+            if (discountPrice.get(orderMenuIndex).equals(String.valueOf(MenuBoard.NO_MENU.getPrice()))) {
                 continue;
             }
-            history.append(discountCategories.getCategory()).append(discountPrice.get(index)).append("원").append("\n");
+            history.append(discountCategories.getCategory()).append(discountPrice.get(orderMenuIndex)).append("원").append("\n");
         }
         return history;
     }
 
     public int getTotalDiscount(int date, Map<String, Integer> menu, String present) {
         int totalDiscount = 0;
-        if(present.equals("대상아님")) {
+        if (present.equals(Present.NOT_EVENT_TARGET.getPresent())) {
             return totalDiscount;
         }
         totalDiscount = discountResult.getTotalDiscount(date, menu, present);
@@ -37,7 +37,7 @@ public class BenefitHistory {
 
     public int getPresentMenuPrice(String present) {
         int presentMenuPrice = 0;
-        if(!present.equals("대상아님")) {
+        if (!present.equals(Present.NOT_EVENT_TARGET.getPresent())) {
             MenuBoard presentMenuBoard = MenuBoard.valueOfMenu(present);
             presentMenuPrice = presentMenuBoard.getPrice();
             return presentMenuPrice;

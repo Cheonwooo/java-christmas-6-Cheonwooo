@@ -1,5 +1,8 @@
 package christmas.validation;
 
+import christmas.constant.NumberUtil;
+import christmas.constant.message.ErrorMessage;
+
 public class VisitDateValidation {
 
     public void validateVisitDateInput(String input) {
@@ -12,7 +15,7 @@ public class VisitDateValidation {
 
     public void validateInputInNull(String input) {
         if (input.equals(null) || input.equals("")) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException(ErrorMessage.VISIT_DATE_ERROR_MESSAGE.getErrorMsg());
         }
     }
 
@@ -20,7 +23,7 @@ public class VisitDateValidation {
         String number = input.replaceAll("[0-9]", "");
 
         if (!number.isEmpty()) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException(ErrorMessage.VISIT_DATE_ERROR_MESSAGE.getErrorMsg());
         }
     }
 
@@ -28,13 +31,13 @@ public class VisitDateValidation {
         try {
             Integer.parseInt(input);
         } catch (IllegalArgumentException illegalArgumentException) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException(ErrorMessage.VISIT_DATE_ERROR_MESSAGE.getErrorMsg());
         }
     }
 
     public void validateVisitDateOutOfRange(int date) {
-        if (date < 1 || date > 31) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+        if (date < NumberUtil.MIN_DATE.getNumber() || date > NumberUtil.MAX_DATE.getNumber()) {
+            throw new IllegalArgumentException(ErrorMessage.VISIT_DATE_ERROR_MESSAGE.getErrorMsg());
         }
     }
 }

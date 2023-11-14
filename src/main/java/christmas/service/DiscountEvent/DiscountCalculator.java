@@ -1,16 +1,19 @@
 package christmas.service.DiscountEvent;
 
+import christmas.constant.Day;
 import christmas.constant.DayDiscount;
 import christmas.constant.MenuCode;
 import christmas.constant.MenuDiscount;
+import christmas.constant.NumberUtil;
 
 import java.util.Map;
 
 public class DiscountCalculator {
 
     public int calculateDDayDiscount(int date) {
-        int dDayDiscount = 1000 + (date - 1) * 100;
-        if (date > 25) {
+        int dDayDiscount = NumberUtil.CHRISTMAS_DDAY_BASE_DISCOUNT.getNumber()
+                + (date - NumberUtil.BASE_DATE.getNumber()) * NumberUtil.ADDITIONAL_DISCOUNT_PER_DAY.getNumber();
+        if (date > Day.CHRISTMAS.getDay()) {
             return 0;
         }
         return dDayDiscount;
@@ -19,7 +22,7 @@ public class DiscountCalculator {
     public int calculateWeekdayDiscount(int dateNumber, Map<String, Integer> menu) {
         DayDiscount dayDiscount = DayDiscount.findDiscountForDate(dateNumber);
 
-        if (dayDiscount.getWeek().equals("주말 할인")) {
+        if (dayDiscount.getWeek().equals(DayDiscount.WEEKEND.getWeek())) {
             return 0;
         }
         int weekdayDiscount = calculateDiscountForMenu(dayDiscount.getDiscountMenuCode(), menu);
@@ -30,7 +33,7 @@ public class DiscountCalculator {
     public int calculateWeekendDiscount(int dateNumber, Map<String, Integer> menu) {
         DayDiscount dayDiscount = DayDiscount.findDiscountForDate(dateNumber);
 
-        if (dayDiscount.getWeek().equals("평일 할인")) {
+        if (dayDiscount.getWeek().equals(DayDiscount.WEEKDAY.getWeek())) {
             return 0;
         }
         int weekendDiscount = calculateDiscountForMenu(dayDiscount.getDiscountMenuCode(), menu);
