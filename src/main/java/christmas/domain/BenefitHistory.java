@@ -27,16 +27,6 @@ public class BenefitHistory {
         return history;
     }
 
-    public int getTotalDiscount(int date, Map<String, Integer> menu, String present) {
-        int totalDiscount = 0;
-        if (present.equals(Present.NOT_EVENT_TARGET.getPresent())) {
-            return totalDiscount;
-        }
-        totalDiscount = discountResult.getTotalDiscount(date, menu, present);
-        return totalDiscount;
-    }
-
-
     public int getPresentMenuPrice(String present) {
         int presentMenuPrice = 0;
         if (!present.equals(Present.NOT_EVENT_TARGET.getPresent())) {

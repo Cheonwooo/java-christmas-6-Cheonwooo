@@ -6,6 +6,7 @@ import christmas.domain.BenefitHistory;
 import christmas.domain.ChristmasOrder;
 import christmas.domain.TotalOrderPrice;
 import christmas.service.PresentEvent;
+import christmas.service.discountevent.TotalDiscount;
 import christmas.view.OutputView;
 
 import java.util.Map;
@@ -14,6 +15,7 @@ public class ChristmasPromotion {
     BenefitHistory benefitHistory = new BenefitHistory();
     ChristmasOrder christmasOrder = new ChristmasOrder();
     TotalOrderPrice totalOrderPrice = new TotalOrderPrice();
+    TotalDiscount totalDiscount = new TotalDiscount();
     PresentEvent presentEvent = new PresentEvent();
     OutputView outputView = new OutputView();
 
@@ -60,26 +62,26 @@ public class ChristmasPromotion {
     }
 
     public int getBenefit(int date, Map<String, Integer> orderMenu, String present) {
-        int totalDiscount;
+        int totalBenefitDiscount;
         StringBuilder history = new StringBuilder();
         if (present.equals(Present.NOT_EVENT_TARGET.getPresent())) {
             history.append(OutputMessage.NOTHING.getOutputMsg()).append("\n");
             outputView.printBenefitHistory(history);
-            totalDiscount = getTotalDiscount(date, orderMenu, present);
-            return totalDiscount;
+            totalBenefitDiscount = getTotalBenefitDiscount(date, orderMenu, present);
+            return totalBenefitDiscount;
         }
         history = benefitHistory.getBenefitHistory(date, orderMenu, present);
         outputView.printBenefitHistory(history);
 
-        totalDiscount = getTotalDiscount(date, orderMenu, present);
-        return totalDiscount;
+        totalBenefitDiscount = getTotalBenefitDiscount(date, orderMenu, present);
+        return totalBenefitDiscount;
     }
 
-    public int getTotalDiscount(int date, Map<String, Integer> orderMenu, String present) {
-        int totalDiscount = benefitHistory.getTotalDiscount(date, orderMenu, present);
-        outputView.printTotalBenefitPrice(totalDiscount);
+    public int getTotalBenefitDiscount(int date, Map<String, Integer> orderMenu, String present) {
+        int totalBenefitDiscount = totalDiscount.calculateTotalBenefitDiscount(date, orderMenu, present);
+        outputView.printTotalBenefitPrice(totalBenefitDiscount);
 
-        return totalDiscount;
+        return totalBenefitDiscount;
     }
 
     public void getPayment(int totalPrice, int totalDiscount, String present) {

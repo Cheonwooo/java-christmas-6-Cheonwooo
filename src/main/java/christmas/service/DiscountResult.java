@@ -12,7 +12,6 @@ public class DiscountResult {
     PresentDiscount presentDiscount = new PresentDiscount();
     SpecialDiscount specialDiscount = new SpecialDiscount();
     WeekDiscount weekDiscount = new WeekDiscount();
-    TotalDiscount totalDiscount = new TotalDiscount();
     DecimalFormat decimalFormat = new DecimalFormat("###,###");
 
     DayFinder dayFinder = new DayFinder();
@@ -28,11 +27,5 @@ public class DiscountResult {
         discountPrice.add(decimalFormat.format(presentDiscount.getPresentDiscount(present)));
 
         return discountPrice;
-    }
-
-    public int getTotalDiscount(int date, Map<String, Integer> orderMenu, String present) {
-        int discount = totalDiscount.calculateTotalDiscount(date, orderMenu, present);
-
-        return discount;
     }
 }
