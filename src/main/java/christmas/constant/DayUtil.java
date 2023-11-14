@@ -1,6 +1,6 @@
 package christmas.constant;
 
-public enum Day {
+public enum DayUtil {
     MONDAY(1),
     THUESDAY(2),
     WEDNESDAY(3),
@@ -14,7 +14,7 @@ public enum Day {
 
     private final int day;
 
-    Day(int day) {
+    DayUtil(int day) {
         this.day = day;
     }
 
