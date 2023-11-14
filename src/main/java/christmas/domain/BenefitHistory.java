@@ -26,14 +26,4 @@ public class BenefitHistory {
         }
         return history;
     }
-
-    public int getPresentMenuPrice(String present) {
-        int presentMenuPrice = 0;
-        if (!present.equals(Present.NOT_EVENT_TARGET.getPresent())) {
-            MenuBoard presentMenuBoard = MenuBoard.valueOfMenu(present);
-            presentMenuPrice = presentMenuBoard.getPrice();
-            return presentMenuPrice;
-        }
-        return presentMenuPrice;
-    }
 }

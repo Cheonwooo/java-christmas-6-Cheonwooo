@@ -6,6 +6,7 @@ import christmas.domain.BenefitHistory;
 import christmas.domain.ChristmasOrder;
 import christmas.domain.TotalOrderPrice;
 import christmas.service.PresentEvent;
+import christmas.service.discountevent.PresentDiscount;
 import christmas.service.discountevent.TotalDiscount;
 import christmas.view.OutputView;
 
@@ -15,6 +16,7 @@ public class ChristmasPromotion {
     BenefitHistory benefitHistory = new BenefitHistory();
     ChristmasOrder christmasOrder = new ChristmasOrder();
     TotalOrderPrice totalOrderPrice = new TotalOrderPrice();
+    PresentDiscount presentDiscount = new PresentDiscount();
     TotalDiscount totalDiscount = new TotalDiscount();
     PresentEvent presentEvent = new PresentEvent();
     OutputView outputView = new OutputView();
@@ -85,7 +87,7 @@ public class ChristmasPromotion {
     }
 
     public void getPayment(int totalPrice, int totalDiscount, String present) {
-        int presentMenuPrice = benefitHistory.getPresentMenuPrice(present);
+        int presentMenuPrice = presentDiscount.getPresentMenuPrice(present);
         int payment = totalPrice - (totalDiscount - presentMenuPrice);
         outputView.printPayment(payment);
     }
