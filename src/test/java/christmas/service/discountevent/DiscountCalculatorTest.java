@@ -1,4 +1,4 @@
-package christmas.service.DiscountEvent;
+package christmas.service.discountevent;
 
 import christmas.constant.menu.MenuCode;
 import org.junit.jupiter.api.BeforeEach;

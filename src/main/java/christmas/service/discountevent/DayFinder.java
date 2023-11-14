@@ -1,4 +1,4 @@
-package christmas.service.DiscountEvent;
+package christmas.service.discountevent;
 
 import christmas.constant.util.DayUtil;
 

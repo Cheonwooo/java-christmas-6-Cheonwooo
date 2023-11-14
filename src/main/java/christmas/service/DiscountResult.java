@@ -1,6 +1,6 @@
 package christmas.service;
 
-import christmas.service.DiscountEvent.*;
+import christmas.service.discountevent.*;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

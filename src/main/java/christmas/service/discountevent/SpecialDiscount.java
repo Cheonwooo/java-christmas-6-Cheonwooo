@@ -1,4 +1,4 @@
-package christmas.service.DiscountEvent;
+package christmas.service.discountevent;
 
 public class SpecialDiscount {
 
