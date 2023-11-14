@@ -7,9 +7,8 @@ public class PresentDiscount {
 
     public int getPresentDiscount(String present) {
         MenuBoard presentMenuBoard = MenuBoard.valueOfMenu(present);
-        int presentMenuPrice = presentMenuBoard.getPrice();
 
-        return presentMenuPrice;
+        return presentMenuBoard.getPrice();
     }
 
     public int getPresentMenuPrice(String present) {

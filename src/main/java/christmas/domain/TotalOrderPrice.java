@@ -18,8 +18,7 @@ public class TotalOrderPrice {
 
     public int calculatePrice(String menu, int menuCount) {
         MenuBoard menuInfo = MenuBoard.valueOfMenu(menu);
-        int price = menuInfo.getPrice() * menuCount;
 
-        return price;
+        return menuInfo.getPrice() * menuCount;
     }
 }
