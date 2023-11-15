@@ -2,14 +2,15 @@ package christmas.domain;
 
 import christmas.constant.event.Badge;
 
+import java.util.Arrays;
+
 public class BadgeEvent {
 
     public static String getBadgeCategory(int totalDiscount) {
-        for (Badge badgeCategory : Badge.values()) {
-            if (totalDiscount >= badgeCategory.getPrice()) {
-                return badgeCategory.getBadge();
-            }
-        }
-        return Badge.NO_BADGE.getBadge();
+        return Arrays.stream(Badge.values())
+                .filter(badge -> totalDiscount >= badge.getPrice())
+                .findFirst()
+                .orElse(Badge.NO_BADGE)
+                .getBadge();
     }
 }

@@ -33,9 +33,9 @@ public class BenefitHistory {
         List<String> discountPrice = discountResult.summarizeDiscount(date, orderMenu, present);
 
         return IntStream.range(0, DiscountCategories.values().length)
-                .filter(orderMenuIndex -> !discountPrice.get(orderMenuIndex).equals(String.valueOf(MenuBoard.NO_MENU.getPrice())))
-                .mapToObj(orderMenuIndex -> DiscountCategories.values()[orderMenuIndex].getCategory() +
-                        discountPrice.get(orderMenuIndex) + "원" + "\n")
+                .filter(menuIndex -> !discountPrice.get(menuIndex).equals(String.valueOf(MenuBoard.NO_MENU.getPrice())))
+                .mapToObj(menuIndex -> DiscountCategories.values()[menuIndex].getCategory() +
+                        discountPrice.get(menuIndex) + "원" + "\n")
                 .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append);
     }
 }

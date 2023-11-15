@@ -7,11 +7,10 @@ import java.util.Map;
 public class TotalOrderPrice {
 
     public int getOrderTotalPrice(Map<String, Integer> orderMenu) {
-        int totalPrice = 0;
-
-        for (Map.Entry<String, Integer> entry : orderMenu.entrySet()) {
-            totalPrice += calculatePrice(entry.getKey(), entry.getValue());
-        }
+        int totalPrice = orderMenu.entrySet()
+                .stream()
+                .mapToInt(entry -> calculatePrice(entry.getKey(), entry.getValue()))
+                .sum();
 
         return totalPrice;
     }
