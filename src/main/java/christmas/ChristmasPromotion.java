@@ -1,7 +1,5 @@
 package christmas;
 
-import christmas.constant.event.Present;
-import christmas.constant.message.OutputMessage;
 import christmas.domain.BenefitHistory;
 import christmas.domain.ChristmasOrder;
 import christmas.domain.TotalOrderPrice;
@@ -26,12 +24,12 @@ public class ChristmasPromotion {
     public void getReservation() {
         int visitDate = getVisitDate();
         Map<String, Integer> orderMenu = getOrderMenu(visitDate);
-        int totalPrice = getTotalPrice(orderMenu);
 
-        generateDiscountEvent(visitDate, orderMenu, totalPrice);
+        generateDiscountEvent(visitDate, orderMenu);
     }
 
-    public void generateDiscountEvent(int visitDate, Map<String, Integer> orderMenu, int totalPrice) {
+    public void generateDiscountEvent(int visitDate, Map<String, Integer> orderMenu) {
+        int totalPrice = getTotalPrice(orderMenu);
         String present = getPresent(totalPrice);
         int totalDiscount = getBenefit(visitDate, orderMenu, present);
         getPayment(totalPrice, totalDiscount, present);
