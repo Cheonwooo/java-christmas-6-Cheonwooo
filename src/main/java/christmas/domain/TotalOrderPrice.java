@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class TotalOrderPrice {
 
-    public int orderPrice(Map<String, Integer> orderMenu) {
+    public int getOrderTotalPrice(Map<String, Integer> orderMenu) {
         int totalPrice = 0;
 
         for (Map.Entry<String, Integer> entry : orderMenu.entrySet()) {

@@ -52,7 +52,7 @@ public class ChristmasPromotion {
     }
 
     public int getTotalPrice(Map<String, Integer> orderMenu) {
-        int totalPrice = totalOrderPrice.orderPrice(orderMenu);
+        int totalPrice = totalOrderPrice.getOrderTotalPrice(orderMenu);
         outputView.printTotalOrderPrice(totalPrice);
 
         return totalPrice;
@@ -69,8 +69,7 @@ public class ChristmasPromotion {
         StringBuilder history = benefitHistory.getBenefitHistory(date, orderMenu, present);
         outputView.printBenefitHistory(history);
 
-        int totalBenefitDiscount = getTotalBenefitDiscount(date, orderMenu, present);
-        return totalBenefitDiscount;
+        return getTotalBenefitDiscount(date, orderMenu, present);
     }
 
     public int getTotalBenefitDiscount(int date, Map<String, Integer> orderMenu, String present) {
