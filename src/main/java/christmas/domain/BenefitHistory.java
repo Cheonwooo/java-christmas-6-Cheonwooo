@@ -2,7 +2,6 @@ package christmas.domain;
 
 import christmas.constant.*;
 import christmas.constant.menu.MenuBoard;
-import christmas.service.DiscountResult;
 
 import java.util.List;
 import java.util.Map;

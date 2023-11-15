@@ -6,7 +6,7 @@ import christmas.domain.BenefitHistory;
 import christmas.domain.ChristmasOrder;
 import christmas.domain.TotalOrderPrice;
 import christmas.domain.VisitDate;
-import christmas.service.PresentEvent;
+import christmas.domain.PresentEvent;
 import christmas.service.discountevent.PresentDiscount;
 import christmas.service.discountevent.TotalDiscount;
 import christmas.view.OutputView;

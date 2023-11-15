@@ -1,4 +1,4 @@
-package christmas.service;
+package christmas.domain;
 
 import christmas.constant.event.Badge;
 

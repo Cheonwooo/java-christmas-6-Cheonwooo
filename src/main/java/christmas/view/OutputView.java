@@ -2,7 +2,7 @@ package christmas.view;
 
 import christmas.constant.event.Present;
 import christmas.constant.message.OutputMessage;
-import christmas.service.BadgeEvent;
+import christmas.domain.BadgeEvent;
 
 import java.text.DecimalFormat;
 import java.util.Map;
