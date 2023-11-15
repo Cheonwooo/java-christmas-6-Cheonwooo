@@ -33,7 +33,7 @@ public class OrderMenuValidation {
         String deleteCommaWithMenu = input.replaceAll("[0-9가-힣a-zA-zㄱ-ㅎ,-]", "");
 
         if (!deleteCommaWithMenu.isEmpty()) {
-            throw new IllegalArgumentException(ErrorMessage.ORDER_ERROR_MESSAGE.getErrorMsg() + 1);
+            throw new IllegalArgumentException(ErrorMessage.ORDER_ERROR_MESSAGE.getErrorMsg());
         }
     }
 
@@ -46,7 +46,7 @@ public class OrderMenuValidation {
             String deleteSeparator = menuName.replaceAll("[0-9ㄱ-ㅎ가-힣a-zA-z]", "");
 
             if (!deleteSeparator.equals(SeparatorUtil.DASH.getSeparator())) {
-                throw new IllegalArgumentException(ErrorMessage.ORDER_ERROR_MESSAGE.getErrorMsg() + 2);
+                throw new IllegalArgumentException(ErrorMessage.ORDER_ERROR_MESSAGE.getErrorMsg());
             }
         }
     }
@@ -61,7 +61,7 @@ public class OrderMenuValidation {
             MenuBoard menuBoard = MenuBoard.valueOfMenu(order);
 
             if (menuBoard == null) {
-                throw new IllegalArgumentException(ErrorMessage.ORDER_ERROR_MESSAGE.getErrorMsg() + 3);
+                throw new IllegalArgumentException(ErrorMessage.ORDER_ERROR_MESSAGE.getErrorMsg());
             }
         }
     }
@@ -77,7 +77,7 @@ public class OrderMenuValidation {
                     .replaceFirst(SeparatorUtil.DASH.getSeparator(), "");
 
             if (remainCount.isEmpty() || Integer.parseInt(remainCount) < 1) {
-                throw new IllegalArgumentException(ErrorMessage.ORDER_ERROR_MESSAGE.getErrorMsg() + 4);
+                throw new IllegalArgumentException(ErrorMessage.ORDER_ERROR_MESSAGE.getErrorMsg());
             }
         }
     }
@@ -94,7 +94,7 @@ public class OrderMenuValidation {
         }
 
         if (totalCount > NumberUtil.MAX_ORDER_COUNT.getNumber()) {
-            throw new IllegalArgumentException(ErrorMessage.ORDER_ERROR_MESSAGE.getErrorMsg() + 5);
+            throw new IllegalArgumentException(ErrorMessage.ORDER_ERROR_MESSAGE.getErrorMsg());
         }
     }
 
@@ -108,7 +108,7 @@ public class OrderMenuValidation {
                 .distinct().toList();
 
         if (!orderMenu.equals(deleteDuplicateOrder)) {
-            throw new IllegalArgumentException(ErrorMessage.ORDER_ERROR_MESSAGE.getErrorMsg() + 6);
+            throw new IllegalArgumentException(ErrorMessage.ORDER_ERROR_MESSAGE.getErrorMsg());
         }
     }
 
@@ -126,7 +126,7 @@ public class OrderMenuValidation {
         }
 
         if (code.size() == 1 && code.contains(MenuCode.BEVERAGE.getMenuCode())) {
-            throw new IllegalArgumentException(ErrorMessage.ORDER_ERROR_MESSAGE.getErrorMsg() + 7);
+            throw new IllegalArgumentException(ErrorMessage.ORDER_ERROR_MESSAGE.getErrorMsg());
         }
     }
 }
