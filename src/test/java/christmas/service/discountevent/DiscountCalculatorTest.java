@@ -25,6 +25,7 @@ class DiscountCalculatorTest {
     void setUp() {
         discountCalculator = new DiscountCalculator();
     }
+
     @DisplayName("크리스마스 디데이 할인 확인")
     @ParameterizedTest(name = "{0}일 할인 금액: {1}원")
     @CsvSource({"1, 1000", "5, 1400", "10, 1900", "25, 3400", "26, 0", "31, 0"})

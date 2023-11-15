@@ -18,7 +18,7 @@ class TotalDiscountTest {
     @MethodSource("discountInfo")
     void checkTotalDiscount(int date, Map<String, Integer> orderMenu, String present) {
         TotalDiscount totalDiscount = new TotalDiscount();
-        int result = totalDiscount.calculateTotalDiscount(date,orderMenu, present);
+        int result = totalDiscount.calculateTotalDiscount(date, orderMenu, present);
         int answer = 31246;
 
         assertThat(result).isEqualTo(answer);
