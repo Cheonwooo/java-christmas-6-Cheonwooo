@@ -66,18 +66,10 @@ public class ChristmasPromotion {
     }
 
     public int getBenefit(int date, Map<String, Integer> orderMenu, String present) {
-        int totalBenefitDiscount;
-        StringBuilder history = new StringBuilder();
-        if (present.equals(Present.NOT_EVENT_TARGET.getPresent())) {
-            history.append(OutputMessage.NOTHING.getOutputMsg()).append("\n");
-            outputView.printBenefitHistory(history);
-            totalBenefitDiscount = getTotalBenefitDiscount(date, orderMenu, present);
-            return totalBenefitDiscount;
-        }
-        history = benefitHistory.getBenefitHistory(date, orderMenu, present);
+        StringBuilder history = benefitHistory.getBenefitHistory(date, orderMenu, present);
         outputView.printBenefitHistory(history);
 
-        totalBenefitDiscount = getTotalBenefitDiscount(date, orderMenu, present);
+        int totalBenefitDiscount = getTotalBenefitDiscount(date, orderMenu, present);
         return totalBenefitDiscount;
     }
 
