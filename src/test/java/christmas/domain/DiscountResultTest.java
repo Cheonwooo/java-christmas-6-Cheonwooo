@@ -1,6 +1,5 @@
 package christmas.domain;
 
-import christmas.domain.DiscountResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

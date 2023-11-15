@@ -31,9 +31,8 @@ class DiscountCalculatorTest {
     @CsvSource({"1, 1000", "5, 1400", "10, 1900", "25, 3400", "26, 0", "31, 0"})
     void checkChristmasDDayDiscount(int date, int discount) {
         int result = discountCalculator.calculateDDayDiscount(date);
-        int answer = discount;
 
-        assertThat(result).isEqualTo(answer);
+        assertThat(result).isEqualTo(discount);
     }
 
     @DisplayName("할인이 적용되는 메뉴 카테고리에 해당하는 메뉴 할인 확인")
@@ -41,8 +40,8 @@ class DiscountCalculatorTest {
     @MethodSource("MenuCodeAndOrderMenu")
     void checkDiscountForMenuCategory(String menuCode, Map<String, Integer> orderMenu, int discount) {
         int result = discountCalculator.calculateDiscountForMenu(menuCode, orderMenu);
-        int answer = discount;
-        assertThat(result).isEqualTo(answer);
+
+        assertThat(result).isEqualTo(discount);
     }
 
     private static Stream<Arguments> MenuCodeAndOrderMenu() {
@@ -110,9 +109,8 @@ class DiscountCalculatorTest {
     @CsvSource({"1, 0", "7, 1000", "25, 1000"})
     void checkStarDiscount(int dateNumber, int discount) {
         int result = discountCalculator.calculateStarDiscount(dateNumber);
-        int answer = discount;
 
-        assertThat(result).isEqualTo(answer);
+        assertThat(result).isEqualTo(discount);
     }
 
 }

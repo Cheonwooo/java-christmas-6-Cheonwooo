@@ -2,7 +2,6 @@ package christmas.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -12,10 +11,9 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class TotalOrderPriceTest {
-    
+
     private TotalOrderPrice totalOrderPrice;
 
     @BeforeEach
@@ -28,9 +26,8 @@ class TotalOrderPriceTest {
     @MethodSource("provideMenu")
     void calculateOrderMenuPrice(String orderMenu, int menuCount, int price) {
         int result = totalOrderPrice.calculatePrice(orderMenu, menuCount);
-        int answer = price;
 
-        assertThat(result).isEqualTo(answer);
+        assertThat(result).isEqualTo(price);
     }
 
     public static Stream<Arguments> provideMenu() {
@@ -45,10 +42,9 @@ class TotalOrderPriceTest {
     @ParameterizedTest
     @MethodSource("provideOrderMenu")
     void calculateTotalOrderPrice(Map<String, Integer> orderMenu, int totalPrice) {
-        int result = totalOrderPrice.orderPrice(orderMenu);
-        int answer = totalPrice;
+        int result = totalOrderPrice.getOrderTotalPrice(orderMenu);
 
-        assertThat(result).isEqualTo(answer);
+        assertThat(result).isEqualTo(totalPrice);
     }
 
     public static Stream<Arguments> provideOrderMenu() {

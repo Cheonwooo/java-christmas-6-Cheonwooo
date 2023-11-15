@@ -2,7 +2,6 @@ package christmas.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -12,7 +11,6 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class BenefitHistoryTest {
 
@@ -28,10 +26,12 @@ class BenefitHistoryTest {
     @MethodSource("provideHasPresent")
     void checkBenefitHistory(int date, Map<String, Integer> orderMenu, String present) {
         String result = benefitHistory.generateBenefitHistory(date, orderMenu, present).toString();
-        String answer = "크리스마스 디데이 할인: -1,200원\n"
-                + "평일 할인: -4,046원\n"
-                + "특별 할인: -1,000원\n"
-                + "증정 이벤트: -25,000원\n";
+        String answer = """
+                크리스마스 디데이 할인: -1,200원
+                평일 할인: -4,046원
+                특별 할인: -1,000원
+                증정 이벤트: -25,000원
+                """;
 
         assertThat(result).isEqualTo(answer);
     }
