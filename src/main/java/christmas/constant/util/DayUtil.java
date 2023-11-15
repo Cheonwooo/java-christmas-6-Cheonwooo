@@ -2,7 +2,7 @@ package christmas.constant.util;
 
 public enum DayUtil {
     MONDAY(1),
-    THUESDAY(2),
+    TUESDAY(2),
     WEDNESDAY(3),
     THURSDAY(4),
     FRIDAY(5),

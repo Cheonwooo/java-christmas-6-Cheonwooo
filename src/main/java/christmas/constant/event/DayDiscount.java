@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum DayDiscount {
-    WEEKDAY("평일 할인", "디저트", Arrays.asList(DayUtil.MONDAY.getDay(), DayUtil.THUESDAY.getDay(),
+    WEEKDAY("평일 할인", "디저트", Arrays.asList(DayUtil.MONDAY.getDay(), DayUtil.TUESDAY.getDay(),
             DayUtil.WEDNESDAY.getDay(), DayUtil.THURSDAY.getDay(), DayUtil.SUNDAY.getDay(), DayUtil.CHRISTMAS.getDay())),
     WEEKEND("주말 할인", "메인", Arrays.asList(DayUtil.FRIDAY.getDay(), DayUtil.SATURDAY.getDay()));
 
